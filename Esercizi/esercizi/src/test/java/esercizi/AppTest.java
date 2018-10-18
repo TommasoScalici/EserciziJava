@@ -1,4 +1,4 @@
-package utilities;
+package esercizi;
 
 import org.junit.Test;
 

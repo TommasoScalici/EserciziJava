@@ -1,9 +1,9 @@
-package utilities;
+package esercizi;
 
-import java.util.Arrays;
+import java.util.*;
 import java.util.regex.*;
 
-public final class Utility {
+public final class Esercizi3 {
 
     public static String iniziali(String nome, String cognome) {
         return nome.charAt(0) + "&" + cognome.charAt(0);
