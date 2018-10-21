@@ -50,6 +50,17 @@ public final class Esercizi4 {
         return pari;
     }
 
+    public static ArrayList<Integer> selezionaPari(ArrayList<Integer> arrayList) {
+
+        ArrayList<Integer> pari = new ArrayList<>();
+
+        for (Integer numero : arrayList)
+            if(numero % 2 == 0)
+                pari.add(numero);
+        
+        return pari;
+    }
+
     public static int[] eliminaDuplicati(int[] array) {
         
         if(array == null || array.length == 0)
@@ -73,6 +84,19 @@ public final class Esercizi4 {
                 senzaDuplicati[j] = array[i + 1];
         }
         
+        return senzaDuplicati;
+    }
+
+    public static ArrayList<Integer> eliminaDuplicati(ArrayList<Integer> array) {
+        
+        ArrayList<Integer> senzaDuplicati = new ArrayList<>();
+
+        for (Integer numero : array)
+            if(!senzaDuplicati.contains(numero))
+                senzaDuplicati.add(numero);
+
+        Collections.sort(senzaDuplicati);
+
         return senzaDuplicati;
     }
 }

@@ -1,5 +1,6 @@
 package esercizi;
 
+import java.util.*;
 
 public final class App {
     private App() {
@@ -8,6 +9,7 @@ public final class App {
     public static void main(String[] args) {
 
         // Test degli esercizi 3
+
         String stringa = "aaaaa";
         System.out.println(Esercizi3.contaOccorrenze(stringa, "aa"));
         String email = "test.email@example.com";
@@ -21,13 +23,21 @@ public final class App {
 
 
         // Test degli esercizi 4
-        Esercizi4.stampArray(new int[] {1, 2, 3, 4, 5});
 
         int[] arr = new int[] {3, 14, 0, 3, 0, 21};
+        int[] testArray = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
+        Esercizi4.stampArray(testArray);
         System.out.print("Array da ordinare e da cui eliminare i duplicati: ");
         Esercizi4.stampArray(arr);
         System.out.print("Array ripulito e ordinato: ");
         Esercizi4.stampArray(Esercizi4.eliminaDuplicati(arr));
+        
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        
+        for (int i : testArray)
+            arrayList.add(i);
+
+        System.out.println("Numeri pari: " + Esercizi4.selezionaPari(arrayList));
     }
 }

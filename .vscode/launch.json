@@ -6,20 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Debug (Launch)",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
-            "stopOnEntry": false,
-            "mainClass": "",
-            "args": ""
-        },
-        {
-            "type": "java",
             "name": "Debug (Launch)-App<contobancario>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
+            "console": "externalTerminal",
             "stopOnEntry": false,
             "mainClass": "contobancario.App",
             "args": "",
@@ -30,7 +20,7 @@
             "name": "Debug (Launch)-App<esercizi>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
+            "console": "externalTerminal",
             "stopOnEntry": false,
             "mainClass": "esercizi.App",
             "args": "",
@@ -38,9 +28,14 @@
         },
         {
             "type": "java",
-            "name": "Debug (Attach)",
-            "request": "attach",
-            "hostName": "localhost"
+            "name": "Debug (Launch)-App<libreria>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "externalTerminal",
+            "stopOnEntry": false,
+            "mainClass": "libreria.CatalogoLibri",
+            "args": "",
+            "projectName": "libreria"
         }
     ]
 }
