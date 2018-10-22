@@ -52,10 +52,10 @@ public final class CatalogoLibri {
     }
 
     private Libro inserisciLibro() {
-        char confirmChar = 'Y';
         String titolo, casaEditrice, nome, cognome;
+        int numeroAutori;
         double prezzo;
-        ArrayList<Autore> autori = new ArrayList<>();
+        Autore[] autori;
 
         System.out.print("Inserisci titolo del libro: ");
         titolo = scanner.nextLine();
@@ -64,22 +64,20 @@ public final class CatalogoLibri {
         scanner.nextLine();
         System.out.print("Inserisci casa editrice del libro: ");
         casaEditrice = scanner.nextLine();
+        System.out.print("Inserisci il numero di autori da inserire: ");
+        numeroAutori = scanner.nextInt();
 
-        System.out.print("\n--- Inserimento autori del libro ---\n");
+        autori = new Autore[numeroAutori];
 
-        do {
+        for(int i = 0; i < numeroAutori; i++)
+        {
             System.out.print("Inserisci nome autore: ");
             nome = scanner.nextLine();
             System.out.print("Inserisci cognome autore: ");
             cognome = scanner.nextLine();
-            autori.add(new Autore(nome, cognome));
+            autori[i] = new Autore(nome, cognome);
+        }
 
-            System.out.print("Inserire un altro autore? (Y/N): ");
-            confirmChar = scanner.next().toUpperCase().charAt(0);
-            scanner.nextLine();
-
-        } while (confirmChar == 'Y');
-
-        return new Libro(titolo, prezzo, casaEditrice, autori.toArray(new Autore[0]));
+        return new Libro(titolo, prezzo, casaEditrice, autori);
     }
 }
