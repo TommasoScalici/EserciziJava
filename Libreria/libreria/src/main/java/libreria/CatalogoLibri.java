@@ -5,13 +5,11 @@ import java.util.*;
 public final class CatalogoLibri {
 
     private static final Scanner scanner = new Scanner(System.in);
-    private final ArrayList<Libro> libri = new ArrayList<>();
+    private static final ArrayList<Libro> libri = new ArrayList<>();
 
     private CatalogoLibri() { }
 
     public static void main(String[] args) {
-
-        CatalogoLibri catalogo = new CatalogoLibri();
 
         System.out.println("---------- Libreria Online 1.0 ----------\n\n");
 
@@ -31,15 +29,24 @@ public final class CatalogoLibri {
 
             switch (scelta) {
                 case 1:
-                catalogo.libri.add(catalogo.inserisciLibro());
+
+                Libro l = inserisciLibro();
+                if(libri.contains(l))
+                    System.out.println("Il libro è già in archivio");
+                else
+                    libri.add(l);
+
                     break;
                 case 2:
                 System.out.println("\n---------- Stampa del catalogo libri ----------\n\n");
-                for (Libro libro : catalogo.libri)
+                for (Libro libro : libri)
                     System.out.println(libro);
                 System.out.println("\n----------         Fine stampa       ----------\n\n");
                     break;
                 case 3:
+                System.out.println("Inserisci testo da ricercare: ");
+                String testoRicerca = scanner.nextLine();
+                ricercaLibro(testoRicerca);
                     break;
                 case 4:
                 scanner.close();
@@ -51,7 +58,7 @@ public final class CatalogoLibri {
         }   
     }
 
-    private Libro inserisciLibro() {
+    private static Libro inserisciLibro() {
         String titolo, casaEditrice, nome, cognome;
         int numeroAutori;
         double prezzo;
@@ -66,6 +73,7 @@ public final class CatalogoLibri {
         casaEditrice = scanner.nextLine();
         System.out.print("Inserisci il numero di autori da inserire: ");
         numeroAutori = scanner.nextInt();
+        scanner.nextLine();
 
         autori = new Autore[numeroAutori];
 
@@ -79,5 +87,29 @@ public final class CatalogoLibri {
         }
 
         return new Libro(titolo, prezzo, casaEditrice, autori);
+    }
+
+    private static void ricercaLibro(String testoRicerca) {
+
+        String[] stringhe = testoRicerca.toUpperCase().split(" ");
+
+        for (String stringa : stringhe) {
+            for (Libro libro : libri) {
+
+                if(libro.getCasaEditrice().toUpperCase().contains(stringa) ||
+                   libro.getTitolo().toUpperCase().contains(stringa)) {
+                   System.out.print(libro);
+                   continue;
+                }
+
+                for (Autore autore : libro.getAutori()) {
+                    if(autore.getCognome().toUpperCase().contains(stringa) ||
+                       autore.getNome().toUpperCase().contains(stringa)) {
+                           System.out.print(libro);
+                           continue;
+                    }
+                }
+            }
+        }
     }
 }
