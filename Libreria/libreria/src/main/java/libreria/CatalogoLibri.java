@@ -32,7 +32,7 @@ public final class CatalogoLibri {
 
                 Libro l = inserisciLibro();
                 if(libri.contains(l))
-                    System.out.println("Il libro è già in archivio");
+                    System.out.print("Il libro è già in archivio");
                 else
                     libri.add(l);
 
@@ -44,9 +44,14 @@ public final class CatalogoLibri {
                 System.out.println("\n----------         Fine stampa       ----------\n\n");
                     break;
                 case 3:
-                System.out.println("Inserisci testo da ricercare: ");
+                System.out.print("Inserisci testo da ricercare: ");
                 String testoRicerca = scanner.nextLine();
-                ricercaLibro(testoRicerca);
+                ArrayList<Libro> risultati = ricercaLibri(testoRicerca);
+
+                System.out.println("\n---------- Risultati della ricerca libri ----------\n\n");
+                for (Libro risultato : risultati)
+                    System.out.println(risultato);
+                System.out.println("\n----------         Fine stampa       ----------\n\n");
                     break;
                 case 4:
                 scanner.close();
@@ -89,27 +94,31 @@ public final class CatalogoLibri {
         return new Libro(titolo, prezzo, casaEditrice, autori);
     }
 
-    private static void ricercaLibro(String testoRicerca) {
+    private static ArrayList<Libro> ricercaLibri(String testoRicerca) {
 
+        ArrayList<Libro> risultati = new ArrayList<>();
         String[] stringhe = testoRicerca.toUpperCase().split(" ");
 
-        for (String stringa : stringhe) {
-            for (Libro libro : libri) {
+        for (Libro libro : libri) {
 
+            for (String stringa : stringhe) {
+            
                 if(libro.getCasaEditrice().toUpperCase().contains(stringa) ||
-                   libro.getTitolo().toUpperCase().contains(stringa)) {
-                   System.out.print(libro);
-                   continue;
+                libro.getTitolo().toUpperCase().contains(stringa)) {
+                if(!risultati.contains(libro))
+                    risultati.add(libro);
                 }
 
                 for (Autore autore : libro.getAutori()) {
                     if(autore.getCognome().toUpperCase().contains(stringa) ||
-                       autore.getNome().toUpperCase().contains(stringa)) {
-                           System.out.print(libro);
-                           continue;
+                    autore.getNome().toUpperCase().contains(stringa)) {
+                        if(!risultati.contains(libro))
+                            risultati.add(libro);
                     }
                 }
             }
         }
+        
+        return risultati;
     }
 }
