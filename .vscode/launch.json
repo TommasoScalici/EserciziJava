@@ -28,7 +28,18 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-App<libreria>",
+            "name": "Debug (Launch)-App<geometria>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "externalTerminal",
+            "stopOnEntry": false,
+            "mainClass": "geometria.App",
+            "args": "",
+            "projectName": "geometria"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CatalogoLibri<libreria>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "console": "externalTerminal",
@@ -36,6 +47,17 @@
             "mainClass": "libreria.CatalogoLibri",
             "args": "",
             "projectName": "libreria"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<ruoli>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "externalTerminal",
+            "stopOnEntry": false,
+            "mainClass": "ruoli.App",
+            "args": "",
+            "projectName": "ruoli"
         }
     ]
 }
