@@ -6,6 +6,17 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Debug (Launch)-Biblioteca<biblioteca>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "externalTerminal",
+            "stopOnEntry": false,
+            "mainClass": "biblioteca.Biblioteca",
+            "args": "",
+            "projectName": "biblioteca"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch)-App<contobancario>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
